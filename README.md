@@ -37,7 +37,24 @@
 > 为什么我要改写原作者的小程序？因为我尝试过根据原作者的所写的ReadMe进行配置，发现过程过于复杂，而且依赖因素太多，尝试了很多次都无法成功。在自己的好奇心驱使下，就基于原项目进行的改写，后台改写为微信小程序云开发，使其安装配置变得非常简单，拿来就可以直接使用了。
 
 ## 程序效果图
-[(https://github.com/lx164/SayLove/blob/master/Images/login.png)]
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/login.png)
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/love-new.png)
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/topic.png)
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/sell.png)
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/my.png)
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/face.png)
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/message.png)
+
+
+
+
 
 ## 配置过程
 
@@ -83,8 +100,9 @@
     const FLASHTIME = 10000000
 ```
 
-如下图：
-![config.js配置](https://github.com/lx164/SayLove/blob/master/Images/config.png)
+> 如下图：
+
+![image](https://github.com/lx164/SayLove/blob/master/Images/config.png)
 
 6、【选填，若使用 `情侣脸` ，则需要填写】填写阿里云面部识别相关配置信息：
 
@@ -97,6 +115,9 @@ var ak_id = '';
 // 阿里云的AccessKeySecret 
 var ak_secret = '';
 ```
+
+>如图：
+![image](https://github.com/lx164/SayLove/blob/master/Images/ali.png)
 
 7、上传 `APP/cloudfunctions` 文件夹下的云函数，云函数所需要的依赖已安装，请直接选择 `上传并部署：所有文件`；
 
