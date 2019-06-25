@@ -124,8 +124,11 @@ var ak_secret = '';
 8、编译运行。
 
 
+## 结语
 
+> 欢迎一起探讨，如果可以，可以给我一个start，或者
 
+![award](https://github.com/lx164/SayLove/blob/master/Images/award.jpg)
 
 
 ## 云开发 quickstart
