@@ -1,0 +1,59 @@
+<view class="personal-container">
+
+  <view class="bg-container">
+    <view class='bg-image'>
+      <!-- <image mode="aspectFill" src='http://image.kucaroom.com/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.QEZuzGgsiSFtf6b9dd803a7fe4bf5f75b6afd5705a73.jpg'></image> -->
+      <image mode="aspectFill" src='bgimg.jpg'></image>
+    </view>
+    <view>
+      <image class='user-image' src='{{avatar}}'></image>
+    </view>
+    <view class='user-info'>
+      <view class='user-name'>{{nickname}}</view>
+      <view class='article'>
+        <view class="letter" >
+          <image src="/image/color-love.png"></image>
+         
+        </view>
+        <view>|</view>
+        <view class="word">爱情属于勇敢的人儿</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='content-container'>
+
+    <view class='content-item sale'  bindtap='openMessage'>
+      <view>
+        <image src='/image/my-message.png' class='item-image'></image>
+      </view>
+      <view class='word'>消 息</view>
+    </view>
+
+    <view class='content-item say-love' bindtap="opendPostList">
+      <view>
+        <image src='/image/color-love.png' class='item-image'></image>
+      </view>
+      <view class='word'>我的表白墙</view>
+    </view>
+
+    <view class='content-item say-love' bindtap="opendTopicList">
+      <view>
+        <image src='/image/topic.png' class='item-image'></image>
+      </view>
+      <view class='word'>我的话题</view>
+    </view>
+
+    <view class='content-item sale' bindtap="openSaleList">
+      <view>
+        <image src='/image/select-sale.png' class='item-image'></image>
+      </view>
+      <view class='word'>我的卖舍友</view>
+    </view>
+
+  </view>
+
+  
+
+</view>

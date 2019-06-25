@@ -1,0 +1,31 @@
+<view class="content">
+    <view class="left">
+        <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+    </view>
+    <view class="right">
+        <block wx:for="{{note}}" wx:key="">
+            <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+    </view>
+</view>
+
+<!--  下面是一个模块 -->
+<template name="item">
+    <view class="item">
+        <image class="item-img" src="{{url}}" mode="widthFix"></image>
+        <view class="item-title-box">
+            <navigator url="url" class="item-title">{{title}}</navigator>
+            <!-- <image class="arrow" src="../../image/arrow.png"></image>   -->
+        </view>
+        <view class="name">
+            <image class="item-ava" src="{{avatar}}"></image>
+            <text class="name-title">{{name}}</text>
+            <view class="heart_">
+                <!-- <image class="heart" src="../../image/heart.png"></image> -->
+                <text>{{heart_num}}</text>
+            </view>
+        </view>
+    </view>
+</template>

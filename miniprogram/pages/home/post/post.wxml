@@ -1,0 +1,53 @@
+
+<form>
+<!-- 文本框 -->
+  <view class="cu-form-group margin-top0" Style='height:200rpx;'>
+    <textarea style='height:200rpx;' maxlength="1024" disabled="{{modalName!=null}}" bindinput="getTextContent" placeholder="爱情属于勇敢的人儿"></textarea>
+  </view>
+ <!-- 图片选择 -->
+  <view class="cu-bar bg-white margin-top">
+		<view class="action">
+			Ta的照片
+		</view>
+		<view class="action">
+			{{attachments.length}}/1
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{attachments}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{attachments[index]}}">
+				<image src='{{attachments[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="ChooseImage" wx:if="{{attachments.length<1}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+  <!-- 其他 -->
+  <view class="cu-form-group margin-top">
+		<view class="title">我要表白Ta</view>
+		<input placeholder="罗熙" bindinput="getName" ></input>
+	</view>
+
+   <view class="cu-form-group margin-top">
+		<view class="title">Ta的手机</view>
+		<input  placeholder="Ta的手机号码（选填）" bindinput="getPhone"></input>
+	</view>
+
+  	<view class="cu-form-group margin-top">
+		<view class="title">匿名</view>
+		<switch bindchange="setPrivate"></switch>
+	</view>
+
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-green lg" bindtap='post' disabled='{{!canPost}}'>发布到表白墙</button>
+</view>
+
+<view class='tips' wx:if="{{showNormal}}">
+  <view class='warming'>短信表白墙：你可以填上自己暗恋对象的手机号码，在你提交信息后系统会往该手机发送一条短信，通知Ta登录小程序查看你对Ta的表白，Ta只需要在表白墙搜索自己的手机号码即可查看表白信息。每天只能发送三条短信表白墙。</view>
+</view>
+
+</form>

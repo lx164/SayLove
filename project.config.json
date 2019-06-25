@@ -1,0 +1,152 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enhance": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.0",
+	"appid": "wxa5e14969888fc0fc",
+	"projectname": "SayLove_V2.0",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 14,
+			"list": [
+				{
+					"id": 0,
+					"name": "卖舍友",
+					"pathName": "pages/sale/index/sale",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发表卖舍友",
+					"pathName": "pages/sale/post_sale/post_sale",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "表白",
+					"pathName": "pages/index/post/post",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "情侣脸",
+					"pathName": "pages/compare_face/face",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "个人中心",
+					"pathName": "pages/personal/index/personal",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "卖舍友详情",
+					"pathName": "pages/sale/comment_sale/comment_sale",
+					"query": "id=142"
+				},
+				{
+					"id": -1,
+					"name": "post_detail",
+					"pathName": "pages/home/post_detail/post_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "topic_comment",
+					"pathName": "pages/home/topic_comment/topic_comment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "topic_detail",
+					"pathName": "pages/home/topic_detail/topic_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "post",
+					"pathName": "pages/home/post/post",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "post_list",
+					"pathName": "pages/personal/post_list/post_list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "sale_list",
+					"pathName": "pages/personal/sale_list/sale_list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "comment_sale",
+					"pathName": "pages/sale/comment_sale/comment_sale",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "set_profile",
+					"pathName": "pages/personal/set_profile/set_profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "message",
+					"pathName": "pages/personal/message/message",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

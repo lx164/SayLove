@@ -1,0 +1,336 @@
+<!--index.wxml-->
+<view class='all-container'>
+    <view class="container" bindtouchmove="hiddenComment" >
+
+        <view class='nav-bar-container'style='background:#FFFFFF;z-index:9999'>
+            <view class='nav-bar'>
+                <view class='all {{select==1?"selected":""}}' bindtap="selected" data-type="1">最新</view>
+                <view class='follow {{select==2?"selected":""}}' bindtap="selected" data-type='2'>今日话题</view>
+                <view class='hot {{select==4?"selected":""}}' bindtap="selected" data-type='4'>最热</view>
+            </view>
+        </view>
+
+        <view class='message-tip' wx:if="{{newMessage}}" bindtap='openMessage'>
+            <view class='tip-content'>
+                <view>远方飘来{{newMessageNumber}}条新消息</view>
+                <view>
+                    <image src='/image/qiqiu.png'></image>
+                </view> 
+            </view>
+        </view>
+
+        <view class="container-wall">
+
+            <!-- 今日话题 -->
+            <view class='topic-container' wx:if="{{showTopic}}" bindtap='topicdetial' data-id='{{topic.id}}'>
+                <view class='topic'>
+                    <view class='title'>
+                        <view class='title-world'># 今日最热话题 #</view>
+                    </view>
+                    <view class='content'>
+                        <text style='font-size:28rpx;color:#185abd;'>话题内容：</text>
+                    </view>
+                    <view class='content  text-grey'>{{topic.content}}</view>
+                    <view class='attachments'>
+                        <view class="attachments-single-image" wx:if='{{topic.attachments.length==1}}'>
+                            <image mode="aspectFill" class="image-item" wx:for="{{topic.attachments}}" wx:key="{{topic.attachments}}" src="{{item}}" id="{{item}}"id=""></image>
+                        </view>
+                        <view class='attachments-more-image' wx:if='{{topic.attachments.length>1}}'>
+                            <image mode="aspectFill" class="image-item" wx:for="{{topic.attachments}}" wx:key="{{topic.attachments}}" src="{{item}}" id="{{item}}"></image>
+                        </view>
+                    </view>
+                    <view class='footer'>
+                        <view class='footer-praise' data-id="{{topic.id}}" bindtap='praiseTopic'>
+                            <image src='/image/topic_praise.png'></image>
+                            <view> {{topic.praise_number}}</view>
+                        </view>
+                        <view class='footer-visit'>
+                            <image src='/image/topic_view.png'></image>
+                            <view> {{topic.view_number}}</view>
+                        </view>
+                        <view bindtap='openTopic' data-id="{{topic.id}}" class='footer-comment'>
+                            <image src='/image/topic_comment.png'></image>
+                            <view> {{topic.comment_number}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <!-- 话题墙 -->
+            <view class="wall-item" wx:for="{{posts}}" wx:key="{{posts}}"  wx:if="{{showTopic && !showposts}}">
+                <view class="item-container">
+                    <!-- 头像 -->
+                    <view class="item-image">
+                        <image bindtap='previewImage' id="{{item.poster.avatar}}" src="{{item.poster.avatar}}" wx:if="{{item.private == 0}}"></image>
+                        <image bindtap='previewImage' src="/image/boy-icon.png" wx:elif="{{item.private == 1 && item.poster.gender == 1}}"></image>
+                        <image bindtap='previewImage' src="/image/girl-icon.png" wx:else></image>
+                    </view>
+
+                    <view class="item-content">
+                        <!-- 昵称 -->
+                        <view class="user-name">
+                            <view wx:if="{{item.private == 0}}">
+                                <view class='nickname'>{{item.poster.nickname}}</view>
+                            </view>
+                            <view wx:if="{{item.private == 1}}" class='nickname'>树洞</view>
+                        </view>
+                        <!-- 表白 -->
+                        <view class='for-user' wx:if="{{item.topic != '无'}}">
+                            <view style='color:#007acc;'># {{item.topic}} #</view>
+                        </view> 
+                        <!-- 内容 -->
+                        <view class="content" wx:if="{{item.content}}" style='color:#2c2c2c;'>{{item.content}}</view>
+                        <view class="single-image" wx:if='{{item.attachments.length==1}}'>
+                            <image mode="widthFix" class="image-item" wx:for="{{item.attachments}}" wx:key="{{item.attachments}}" src="{{item}}" bindtap='previewImage' id="{{item}}"></image>
+                        </view>
+
+                        <view class='more-image' wx:if='{{item.attachments.length>1}}'>
+                            <image mode="aspectFill" class="image-item" wx:for="{{item.attachments}}" wx:key="{{item.attachments}}" wx:for-item="sitem" src="{{sitem}}" bindtap='previewMoreImage' data-obj="{{item.attachments}}" id="{{sitem}}"></image>
+                        </view>
+
+                        <view class='user-college' wx:if="{{item.show_college}}">
+                            <view>{{item.college}}</view>
+                        </view>
+                        <!-- 发布时间 -->
+                        <view class="post-time">
+                            <!-- 时间 -->
+                            <view class='time-and-delete'>
+                                <view>{{item.created_at}}</view>
+                                <view class='delete-post' id="{{item.id}}" wx:if="{{item.can_delete}}" bindtap='deletePost'>删除</view>
+                            </view>
+                            <view>
+
+                                <view class='footer-comment'>
+                                    <!-- 未赞 -->
+                                    <image wx:if='{{!item.haszan}}'data-posteropenid="{{item.posteropenid}}" bindtap='zan' data-dbname='topics'data-index="{{index}}"data-obj_type='topic' data-id="{{item.id}}" data-iszan='false' style='margin-right:30rpx;padding:5rpx;' src='/image/topic_praise.png'></image>
+                                    <!-- 已赞,显示赞的图标，可取消赞 -->
+                                    <image wx:if='{{item.haszan}}'data-posteropenid="{{item.posteropenid}}" bindtap='zan'data-dbname='topics' data-index="{{index}}"data-obj_type='topic' data-id="{{item.id}}" data-iszan='true' style='margin-right:30rpx;padding:5rpx;' src='/image/color-love.png'></image>
+                                    <!-- 评论 -->
+                                    <image src='/image/topic_comment.png' data-target="Modal" data-type='normalcomment' data-refcommenter='' data-objid="{{item.id}}"data-obj_type='topic' data-index="{{index}}"data-dbname='topics'data-posteropenid="{{item.posteropenid}}" bindtap='showCommentInput'></image>
+
+                                </view>
+
+
+                            </view>
+                        </view>
+
+                        <view class="comment" wx:if="{{item.praises.length > 0 || item.comments.length > 0}}">
+                            <view class="qipao"></view>
+                            <view class="comment-detail">
+                                <!-- 显示点赞信息 -->
+                                <view class="praise-container" wx:if="{{item.praises.length > 0}}">
+                                    <view class='praise-content'>
+                                        <image class='praise-user praise-item' src='/image/make_praise.png'></image>
+                                        <view class='praise-item' wx:for="{{item.praises}}" wx:key="{{item.praises}}">
+                                            <view class='praise-item-sub'>
+                                                <!-- 点赞头像 -->
+                                                <view>
+                                                    <image class='praise-user-avatar' src='{{item.avatar}}'></image>
+                                                </view>
+                                                <!-- 点赞名称 -->
+                                                <view class='praise-user-name'>
+                                                    {{item.nickname}}
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+
+                                <!-- 评论列表 -->
+                                <view class='line' wx:if="{{item.comments.length > 0 && item.praises.length > 0}}">
+                                </view>
+                                <view class='comment-user-wall' wx:if='{{item.comments.length > 0}}'>
+                                    <view class='comment-user-container' wx:for="{{item.comments}}" wx:key="{{item.comments}}" wx:for-item="sub">
+                                        <view class='comment-wall-item' catchtap="deleteComment" data-item="{{item}}" data-index='{{index}}'data-type='topics'>
+                                            <!-- 正常评论 -->
+                                            <view class='comment-user-container' wx:if="{{!sub.ref_comment.refCommenter}}">
+                                                <view catchtap='showCommentInput'data-posteropenid="{{item.posteropenid}}" data-dbname='topics' data-objid='{{sub.objId}}' data-obj_type='topic' data-target="Modal" data-refcommenter='{{sub.commenter.nickname}}' data-index='' data-type='refcomment' class="comment-user inline-item">
+                                                    {{sub.commenter.nickname}}:
+                                                </view>
+                                                <view class='inline-item'>{{sub.content}}</view>
+                                            </view>
+
+
+                                            <!-- 带有回复的评论 -->
+                                            <view class='comment-user-container' wx:if="{{sub.ref_comment.refCommenter}}">
+                                                <view catchtap='showCommentInput'data-posteropenid="{{item.posteropenid}}" data-dbname='topics' data-objid='{{sub.objId}}'data-obj_type='topic' data-target="Modal" data-refcommenter='{{sub.commenter.nickname}}' data-index='' data-type='refcomment' class="comment-user inline-item">
+                                                    {{sub.commenter.nickname}}
+                                                </view>
+                                                <view class="inline-item">回复</view>
+                                                <view catchtap='showCommentInput'data-posteropenid="{{item.posteropenid}}" data-dbname='topics' data-objid='{{sub.objId}}'data-obj_type='topic' data-target="Modal" data-refcommenter='{{sub.commenter.nickname}}' data-index='' data-type='refcomment' class="comment-user inline-item">
+                                                    {{sub.ref_comment.refCommenter}}:
+                                                </view>
+                                                <view class='inline-item'>{{sub.content}}</view>
+                                            </view>
+
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+
+            <!-- 表白墙列表 -->
+            <view class="wall-item" wx:for="{{posts}}" wx:key="{{posts}}" wx:if='{{!showTopic &&showposts}}'>
+                <view class="item-container" data-id='{{item.id}}'id='{{item.id}}' bindtap="postdetail">
+                    <!-- 头像 -->
+                    <view class="item-image">
+                        <image bindtap='previewImage' id="{{item.poster.avatar}}" src="{{item.poster.avatar}}" wx:if="{{item.private == 0}}"></image>
+                        <image bindtap='previewImage' src="/image/boy-icon.png" wx:elif="{{item.private == 1 && item.poster.gender == 1}}"></image>
+                        <image bindtap='previewImage' src="/image/girl-icon.png" wx:else></image>
+                    </view>
+
+                    <view class="item-content">
+                        <!-- 昵称 -->
+                        <view class="user-name">
+                            <view wx:if="{{item.private == 0}}">
+                                <view class='nickname'>{{item.poster.nickname}}</view>
+                            </view>
+                            <view wx:if="{{item.private == 1}}" class='nickname'>树洞</view>
+                        </view>
+                        <!-- 表白 -->
+                        <view class='for-user' wx:if="{{item.topic != '无'}}">
+                            <view style='color:#007acc;'>表白@{{item.topic}}</view>
+                        </view>
+                        <!-- 内容 -->
+                        <view class="content" wx:if="{{item.content}}" style='color:#2c2c2c;'>{{item.content}}</view>
+                        <view class="single-image" wx:if='{{item.attachments.length==1}}'>
+                            <image mode="widthFix" class="image-item" wx:for="{{item.attachments}}" wx:key="{{item.attachments}}" src="{{item}}" bindtap='previewImage' id="{{item}}"></image>
+                        </view>
+
+                        <view class='more-image' wx:if='{{item.attachments.length>1}}'>
+                            <image mode="aspectFill" class="image-item" wx:for="{{item.attachments}}" wx:key="{{item.attachments}}" wx:for-item="sitem" src="{{sitem}}" bindtap='previewMoreImage' data-obj="{{item.attachments}}" id="{{sitem}}"></image>
+                        </view>
+
+                        <view class='user-college' wx:if="{{item.show_college}}">
+                            <view>{{item.college}}</view>
+                        </view>
+                        <!-- 发布时间 -->
+                        <view class="post-time">
+                            <!-- 时间 -->
+                            <view class='time-and-delete'>
+                                <view>{{item.created_at}}</view>
+                                <view class='delete-post' id="{{item.id}}" wx:if="{{item.can_delete}}" bindtap='deletePost'>删除</view>
+                            </view>
+                            <view>
+
+                                <view class='footer-comment'>
+                                    <!-- 未赞 -->
+                                    <image wx:if='{{!item.haszan}}' bindtap='zan'data-posteropenid="{{item.posteropenid}}" data-dbname='posts' data-index="{{index}}"data-obj_type='posts' data-id="{{item.id}}" data-iszan='false' style='margin-right:30rpx;padding:5rpx;' src='/image/topic_praise.png'></image>
+                                    <!-- 已赞,显示赞的图标，可取消赞 -->
+                                    <image wx:if='{{item.haszan}}' bindtap='zan'data-posteropenid="{{item.posteropenid}}" data-dbname='posts' data-index="{{index}}" data-obj_type='posts' data-id="{{item.id}}" data-iszan='true' style='margin-right:30rpx;padding:5rpx;' src='/image/color-love.png'></image>
+                                    <!-- 评论 -->
+                                    <image src='/image/topic_comment.png' data-posteropenid="{{item.posteropenid}}"data-target="Modal" data-type='normalcomment'data-obj_type='posts' data-refcommenter='' data-objid="{{item.id}}" data-index="{{index}}" data-dbname='posts' bindtap='showCommentInput'></image>
+
+                                </view>
+
+
+                            </view>
+                        </view>
+
+                        <view class="comment" wx:if="{{item.praises.length > 0 || item.comments.length > 0}}">
+                            <view class="qipao"></view>
+                            <view class="comment-detail">
+                                <!-- 显示点赞信息 -->
+                                <view class="praise-container" wx:if="{{item.praises.length > 0}}">
+                                    <view class='praise-content'>
+                                        <image class='praise-user praise-item' src='/image/make_praise.png'></image>
+                                        <view class='praise-item' wx:for="{{item.praises}}" wx:key="{{item.praises}}">
+                                            <view class='praise-item-sub'>
+                                                <!-- 点赞头像 -->
+                                                <view>
+                                                    <image class='praise-user-avatar' src='{{item.avatar}}'></image>
+                                                </view>
+                                                <!-- 点赞名称 -->
+                                                <view class='praise-user-name'>
+                                                    {{item.nickname}}
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+
+                                <!-- 评论 -->
+                                <view class='line' wx:if="{{item.comments.length > 0 && item.praises.length > 0}}">
+                                </view>
+                                <view class='comment-user-wall' wx:if='{{item.comments.length > 0}}'>
+                                    <view class='comment-user-container' wx:for="{{item.comments}}" wx:key="{{item.comments}}" wx:for-item="sub">
+                                        <view class='comment-wall-item'catchtap="deleteComment"data-item="{{item}}" data-index='{{index}}'data-type='posts'>
+                                            <!-- 正常评论 -->
+                                            <view class='comment-user-container' wx:if="{{!sub.ref_comment.refCommenter}}">
+                                                <view catchtap='showCommentInput'data-posteropenid="{{item.posteropenid}}" data-dbname='posts' data-objid='{{sub.objId}}'data-obj_type='posts' data-target="Modal" data-refcommenter='{{sub.commenter.nickname}}' data-index='' data-type='refcomment' class="comment-user inline-item">
+                                                    {{sub.commenter.nickname}}:
+                                                </view>
+                                                <view class='inline-item'>{{sub.content}}</view>
+                                            </view>
+
+                                            <!-- 带有回复的评论 -->
+                                            <view class='comment-user-container' wx:if="{{sub.ref_comment.refCommenter}}">
+                                                <view catchtap='showCommentInput'data-posteropenid="{{item.posteropenid}}" data-dbname='posts' data-objid='{{sub.objId}}'data-obj_type='posts' data-target="Modal" data-refcommenter='{{sub.commenter.nickname}}' data-index='' data-type='refcomment' class="comment-user inline-item">
+                                                    {{sub.commenter.nickname}}
+                                                </view>
+                                                <view class="inline-item">回复</view>
+                                                <view catchtap='showCommentInput'data-posteropenid="{{item.posteropenid}}" data-dbname='posts' data-objid='{{sub.objId}}'data-obj_type='posts' data-target="Modal" data-refcommenter='{{sub.commenter.nickname}}' data-index='' data-type='refcomment' class="comment-user inline-item">
+                                                    {{sub.ref_comment.refCommenter}}:
+                                                </view>
+                                                <view class='inline-item'>{{sub.content}}</view>
+                                            </view>
+
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+
+
+        </view>
+
+        <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+        <not-more wx:if="{{notDataTips && posts.length != 0}}"></not-more>
+
+    </view>
+
+    <!-- 发布表白墙的按钮 -->
+    <view class='post-container' wx:if='{{showpostbtn}}'>
+        <view class='wall'></view>
+        <view class='post'>
+            <image src='/image/post.png' data-page='/pages/home/post/post' bindtap='post'></image>
+        </view>
+    </view>
+
+    <!-- 发布话题的按钮 -->
+    <view class='post-container' wx:if='{{!showpostbtn}}'>
+        <view class='wall'></view>
+        <view class='post'>
+            <image src='/image/new-post.png' data-page='/pages/home/postTopic/postTopic' bindtap='post'></image>
+        </view>
+    </view>
+
+</view>
+
+<!-- 评论框 -->
+<view class="cu-modal {{modalName=='Modal'?'show':''}}" wx:if="{{showCommentInput}}">
+    <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+            <view class="content">{{commentInfo.title}}</view>
+            <view class="action" bindtap="hideModal">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+        <view class="padding-xl">
+            <textarea wx:if="{{showCommentInput}}" class='bg-red0 shadow-warp text-left padding-sm' bindinput='getCommentContent' placeholder='{{commentInfo.placeholder}}' value='{{content}}'></textarea>
+        </view>
+        <view class="cu-bar bg-gradual-green">
+            <view class="action margin-0 flex-sub  solid-left text-Abc" bindtap="postComment">{{commentInfo.btn}}</view>
+        </view>
+    </view>
+</view>

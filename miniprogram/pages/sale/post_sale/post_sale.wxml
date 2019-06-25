@@ -1,0 +1,64 @@
+
+<form>
+    <!-- 其他 -->
+    <view class="cu-form-group margin-top">
+        <view class="title">名字</view>
+        <input placeholder="输入舍友名字" bindinput='getName' class='right-item'></input>
+    </view>
+
+    <view class="cu-form-group margin-top0">
+        <view class='title'>性别</view>
+        <picker bindchange="bindPickerChange" value="{{gender}}" range="{{array}}">
+            <view class="picker">
+                {{gender?gender:'请选择'}}
+            </view>
+        </picker>
+    </view>
+
+    <view class="cu-form-group margin-top0">
+        <view class="title">专业</view>
+        <input placeholder="Ta的专业是啥？" bindinput='getMajor'></input>
+    </view>
+
+    <view class="cu-form-group margin-top0">
+        <!-- <view class="title"></view> -->
+        <input placeholder="说说看，你喜欢怎样的ta呢..." bindinput="getLike"></input>
+    </view>
+
+    <!-- 文本框 -->
+    <view class="cu-form-group margin-top0" Style='height:200rpx;'>
+        <textarea style='height:200rpx;' placeholder="介绍一下舍友吧" class='introduce' maxlength="1024" bindinput='getContent'></textarea>
+    </view>
+
+    <!-- 图片选择 -->
+    <view class="cu-bar bg-white margin-top0">
+        <view class="action">
+            图片上传
+        </view>
+        <view class="action">
+            {{attachments.length}}/1
+        </view>
+    </view>
+    <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{attachments}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{attachments[index]}}">
+                <image src='{{attachments[index].url}}' mode='aspectFill'></image>
+                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="solids" bindtap="ChooseImage" wx:if="{{attachments.length<1}}">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
+        </view>
+    </view>
+
+    <view class="padding flex flex-direction">
+        <button class="cu-btn bg-green lg" bindtap='post'>发表</button>
+    </view>
+
+    <view class='tips'>
+        <view class='warming'>温馨提示：出售您亲爱的舍友前请征得本人同意，否则后果自负。</view>
+    </view>
+
+</form>

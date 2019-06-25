@@ -1,0 +1,82 @@
+.content{
+  margin: 0 20rpx;
+  text-align: justify; 
+}  
+.item{
+  background-color: #fff;
+  margin: 1%; 
+  margin-bottom: 20rpx;
+  display: inline-block;
+}
+.item-ava{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+}
+.heart{
+  width: 30rpx;
+  height: 26rpx;
+  margin-right: 8rpx;
+}
+.heart_{
+  display: flex;
+  align-items: center;
+}
+.item-img{
+  width: 100%
+  
+}
+.item-title{
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-family: 'PingFang SC-Medium';
+  color: #1e1e1e;
+  margin: 15rpx;
+  line-height: 27rpx;
+}
+.item .name{
+  display: flex;
+  padding: 0 15rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+  font-size: 22rpx;
+  color: #1e1e1e;
+  font-family: 'PingFang SC-Medium';
+}
+.name image{
+  flex: 0 0 30rpx;
+}
+.item-title-box{
+  display: flex;
+  position: relative;
+}
+.name-title{
+  flex: 1;
+  margin-left: 18rpx;
+  margin-right: 20rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.name text:last-child{
+  flex: 0 0 30rpx;
+  color: #c4c4c4;
+  text-decoration: underline;
+  line-height: 10rpx;
+  
+}
+.left,.right{
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+.right{
+  float: right;
+}

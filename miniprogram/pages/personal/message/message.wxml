@@ -1,0 +1,57 @@
+<view class="message-container">
+    <view style='background:#acb5bd;margin-top:10rpx;padding:10rpx;border-radius:10rpx;'>
+        共<text style='color:#ff5e15'>{{message_number}}</text>条历史信息
+        <text style='color:#3c9be7' bindtap='clearnmassage'wx:if='{{message_number > 0}}'>点我清空消息</text>
+    </view>
+    <view class='message-content'>
+
+        <view class='message-item' wx:for="{{messageList}}" wx:key="{{messageList}}" wx:if="{{param}}">
+            <view class='item' bindtap="opendDetail" data-objid="{{item.obj_id}}" data-type="{{item.obj_type}}">
+                <view class='left'>
+                    <view>
+                        <image src='{{item.from_user.avatar}}'></image>
+                    </view>
+                </view>
+                <view class='content'>
+                    <view class='username'>
+                        {{item.from_user.nickname}}
+                    </view>
+                    <view class='message' wx:if="{{item.obj_type == 'posts'}}">
+                        <text style='color:#ff0080'>^ 表白墙 ^</text>{{item.content}}</view>
+
+                    <view class='message' wx:if="{{item.obj_type == 'topic'}}">
+                        <text style='color:#7d00ff'># 话题 #</text>{{item.content}}</view>
+
+                    <view class='message' wx:if="{{item.obj_type == 'sale'}}">
+                        <text style='color:#ff7e00'>& 卖舍友 &</text>{{item.content}}</view>
+
+                    <view class='delete-message' wx:if="{{item.isread}}">
+                        该消息已读
+                    </view>
+
+                    <view class='praise' wx:if="{{item.action_type == 2 && item.parentObj != null}}">
+                        <image src='/image/make_praise.png'></image>
+                    </view>
+
+                    <view class='created_at'>{{item.created_at}}</view>
+
+                </view>
+
+                <view class='right'>
+                    <view class='image' wx:if="{{item.parentObj.attachments.length != 0}}">
+                        <image mode='aspectFill' src='{{item.parentObj.attachments[0]}}'></image>
+                    </view>
+                    <view class='content' wx:if="{{item.parentObj.attachments.length == 0}}">
+                        {{item.parentObj.content}}
+                    </view>
+
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+    <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+    <not-more wx:if="{{notDataTips}}"></not-more>
+
+</view>

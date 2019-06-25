@@ -1,0 +1,120 @@
+<view class="sale-container" bindtouchmove="hiddenComment">
+
+    <view class='detail-container' wx:if="{{sale}}">
+        <view class='header-container'>
+            <view class='header-bg'></view>
+            <swiper class='image-container' indicator-dots="true" indicator-color="#ffffff" indicator-active-color="#66CDAA">
+                <block wx:for="{{sale.attachments}}" wx:key="{{item}}">
+                    <swiper-item class='image-item'>
+                        <image mode='aspectFill' src="{{item.url}}" bindtap='previewImage' id="{{item}}" class="sale-image" />
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view> 
+        <view class='friend-info-container'>
+            <view class='friend-name'>{{sale.name}}</view>
+            <view class='gender'>{{sale.gender}}</view>
+            <view class='major'>专业：{{sale.major}}</view>
+            <view class='major'>喜欢TA：{{sale.expectation}}</view>
+            <view class='major'>舍友简介：{{sale.introduce}}</view>
+        </view>
+
+        <view class='operate'> 
+            <view class='share-button'>
+                <button class='button' style='border: none;' bindtap='showCommentInput' data-objid="{{sale.id}}" data-refid="" data-type="2" data-target="Modal">撩一下</button>
+            </view>
+            <view class='collect' bindtap='follow' wx:if="{{sale.follow==false}}">喜欢</view>
+            <view class='collect' bindtap='follow' wx:else>已喜欢</view>
+        </view>
+    </view>
+
+    <view class='comment-container' wx:if='{{sale}}'>
+        <view class='comment-wall'>
+            <view class='comment-header'>
+                <view class='zan'>
+                    {{sale.follow_number
+                    <=0?0:sale.follow_number}}喜欢 </view>
+                        <view class='zan' wx:if="{{sale.can_delete}}"data-id='{{sale.id}}'data-fileid='{{sale.attachments[0].url}}' bindtap='deleteSale'>
+                            <view style='padding-left:5rpx;'>删除</view>
+                        </view>
+                        <view class='zan share-user-button'>
+                            <button class='button' open-type="share" style='border: none;'>
+                                分享转发
+                            </button>
+                        </view>
+                        <view class='comment'>
+                            <view style='padding-left:5rpx;'>{{sale.comment_number}}评论</view>
+                        </view>
+                </view>
+            </view>
+
+            <view class='user-comment'>
+
+                <view class='comment-item' wx:for="{{sale.comments}}" wx:key="{{sale.comments}}">
+                    <view class='left'>
+                        <view class='user-image'>
+                            <image src='{{item.avatar}}'></image>
+                        </view>
+                    </view>
+                    <view class='right'>
+                        <view class='comment-name right-item'>
+                            <view>{{item.nickname}}</view>
+                            <!-- <image class='letter-image' bindtap='letter' wx:if="{{sale.can_chat==true && param==true}}" data-obj="{{item.commenter.id}}" data-chat="1" src='/image/letter.png'></image> -->
+                        </view>
+                        <view class='content right-item'>
+                            {{item.content}}
+                        </view>
+                        <view class='create_at right-item'>
+                            <view>{{item.created_at}}</view>
+                            <view class='comment-icon'>
+                                <!-- <image src='/image/comment.png' bindtap='showCommentInput' data-objid="{{item.id}}" data-type='4' data-refid=""></image> -->
+                            </view>
+                        </view>
+                        <view class='comment-user-wall' wx:if='{{item.sub_comments.length > 0}}'>
+                            <view class="qipao"></view>
+                            <view class='comment-user-container' wx:for="{{item.sub_comments}}" wx:key="{{item.sub_comments}}" wx:for-item="sub">
+                                <view class='comment-wall-item' wx:if="{{!sub.ref_comment}}" data-objid="{{item.id}}" data-type='4' data-refid="{{sub.id}}" bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}">
+                                    <view class='comment-user-container'>
+                                        <view class="comment-user inline-item">
+                                            {{sub.commenter.nickname}}：
+                                        </view>
+                                        <view class='inline-item'>{{sub.content}}</view>
+                                    </view>
+                                </view>
+
+                                <view class='comment-ref-user-container' bindtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}" data-objid="{{item.id}}" data-type='4' data-refid="{{sub.id}}" wx:if="{{sub.ref_comment}}">
+                                    <view class="comment-user inline-item">
+                                        {{sub.commenter.nickname}}
+                                    </view>
+                                    <view class='inline-item'>回复</view>
+                                    <view class="comment-user inline-item">
+                                        {{sub.ref_comment.refCommenter.nickname}}：
+                                    </view>
+                                    <view class='inline-item'>{{sub.content}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+
+    <view class="cu-modal {{modalName=='Modal'?'show':''}}" wx:if="{{showCommentInput}}">
+        <view class="cu-dialog">
+            <view class="cu-bar bg-white justify-end">
+                <view class="content">输入评论内容</view>
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close text-red"></text>
+                </view>
+            </view>
+            <view class="padding-xl">
+                <textarea wx:if="{{showCommentInput}}" class='bg-red0 shadow-warp text-left padding-sm' bindinput='getCommentContent' placeholder='输入评论内容' value='{{content}}'></textarea>
+            </view>
+            <view class="cu-bar bg-gradual-green">
+                <view class="action margin-0 flex-sub  solid-left text-Abc" bindtap="postComment">提交评论</view>
+            </view>
+        </view>
+    </view>

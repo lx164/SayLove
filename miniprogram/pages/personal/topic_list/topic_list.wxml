@@ -1,0 +1,106 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="container-wall">
+
+    <view class="wall-item" wx:for="{{posts}}" wx:key="{{posts}}">
+      <view class="item-container" data-id='{{item.id}}'data-view_number='{{item.view_number}}'id='{{item.id}}' catchtap="postdetail">
+        <view class="item-image">
+          <image catchtap='previewImage' id="{{item.poster.avatar}}" src="{{item.poster.avatar}}" wx:if="{{item.private == 0}}"></image>
+          <image catchtap='previewImage' src="/image/boy.png" wx:elif="{{item.private == 1 && item.poster.gender == 1}}"></image>
+          <image catchtap='previewImage' src="/image/girl.png" wx:else></image>
+        </view>
+        <view class="item-content">
+          <view class="user-name">
+            <view wx:if="{{item.private == 0}}"> 
+              {{item.poster.nickname}}
+            </view>
+            <view wx:if="{{item.private == 1}}">匿名の同学</view>
+            <view class='follow-icon' wx:if="{{item.follow}}">
+              <view class='follow-world' data-obj="{{item.id}}" catchtap="follow">关注</view>
+            </view>
+            <view class='had-follow' wx:if="{{!item.follow}}">
+              <view  data-obj="{{item.id}}" class='had-follow-world'>查看详情</view>
+            </view>
+          </view>
+          <view class='for-user' wx:if="{{item.topic != '无'}}">
+            # {{item.topic}} #
+          </view>
+          <view class="content" wx:if="{{item.content}}">{{item.content}}</view>
+          <view class="single-image" wx:if='{{item.attachments.length==1}}'>
+            <image mode="widthFix" class="image-item" wx:for="{{item.attachments}}" wx:key="{{item.attachments}}" src="{{item}}" catchtap='previewImage' id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class='more-image' wx:if='{{item.attachments.length>1}}'>
+            <image mode="aspectFill" class="image-item" wx:for="{{item.attachments}}" wx:key="{{item.attachments}}" src="{{item}}" catchtap='previewImage' id="{{baseImageUrl+item}}"></image>
+          </view>
+          <view class="post-time">
+            <view class='time-and-delete'>
+              <view>{{item.created_at}}</view>
+              <view class='delete-post' id="{{item.id}}" data-fileid="{{item.attachments[0]}}"  catchtap='deletePost'>删除话题</view>
+            </view>
+          </view>
+          <view class="comment" wx:if="{{item.praises.length > 0 || item.comments.length > 0}}">
+            <view class="qipao"></view>
+            <view class="comment-detail">
+              <view class="praise-container" wx:if="{{item.praises.length > 0}}">
+                <view class='praise-icon'>
+                  <image class='praise-user praise-item' src='/image/make_praise.png'></image>
+                </view>
+                <view class='praise-content'>
+                  <view class='praise-item' wx:for="{{item.praises}}" wx:key="{{item.praises}}">
+                    <view class='praise-item-sub'>
+                      <view>
+                        <image class='praise-user-avatar' src='{{item.avatar}}'></image>
+                      </view>
+                      <view class='praise-user-name'>
+                        {{item.nickname}}
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class='line' wx:if="{{item.comments.length > 0 && item.praises.length > 0}}">
+              </view>
+              <view class='comment-user-wall' wx:if='{{item.comments.length > 0}}'>
+                <view class='comment-user-container' wx:for="{{item.comments}}" wx:key="{{item.comments}}" wx:for-item="sub">
+                  <view class='comment-wall-item' catchtap="{{sub.can_delete?'deleteComment':'commentOtherComment'}}" data-objid="{{item.id}}" data-refid="{{sub.id}}" data-objtype='1'>
+
+                    <view class='comment-user-container' wx:if="{{!sub.ref_comment.refCommenter}}">
+                      <view class="comment-user inline-item">
+                        {{sub.commenter.nickname}}:
+                      </view>
+                      <view class='inline-item'>{{sub.content}}</view>
+                    </view>
+
+                    <view class='comment-user-container' wx:if="{{sub.ref_comment.refCommenter}}">
+                      <view class="comment-user inline-item">
+                        {{sub.commenter.nickname}}
+                      </view>
+                      <view class="comment-user inline-item">回复</view>
+                      <view class="comment-user inline-item">
+                        {{sub.ref_comment.refCommenter}}:
+                      </view>
+                      <view class='inline-item'>{{sub.content}}</view>
+                    </view>
+
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+  <not-more wx:if="{{notDataTips && posts.length != 0}}"></not-more>
+
+</view>
+
+<view class='comment-input-container' wx:if="{{showCommentInput}}">
+  <textarea placeholder="评论" maxlength="1024" auto-focus cursor-spacing="10" fixed="true" auto-height bindinput='getCommentContent' />
+  <view class='send-button' catchtap='sendComment'>
+    <view>发送</view>
+  </view>
+</view>
