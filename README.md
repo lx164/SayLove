@@ -37,6 +37,7 @@
 > 为什么我要改写原作者的小程序？因为我尝试过根据原作者的所写的ReadMe进行配置，发现过程过于复杂，而且依赖因素太多，尝试了很多次都无法成功。在自己的好奇心驱使下，就基于原项目进行的改写，后台改写为微信小程序云开发，使其安装配置变得非常简单，拿来就可以直接使用了。
 
 ## 程序效果图
+[(https://github.com/lx164/SayLove/blob/master/Images/login.png)]
 
 ## 配置过程
 
@@ -83,7 +84,7 @@
 ```
 
 如下图：
-https://github.com/lx164/SayLove/tree/master/Images/config.png
+![config.js配置](https://github.com/lx164/SayLove/blob/master/Images/config.png)
 
 6、【选填，若使用 `情侣脸` ，则需要填写】填写阿里云面部识别相关配置信息：
 
