@@ -90,7 +90,9 @@
 
 源码地址：https://github.com/lx164/SayLove/tree/master
 
-或者clone项目 `git clone https://github.com/lx164/SayLove/tree/master/App`
+或者clone项目 `git clone https://github.com/lx164/SayLove.git`
+
+> 【注】：源码在APP文件夹下,在微信开发者工具导入的时候选择APP这个文件夹。因为有反映所导入报错，所以在这里说明一下。
 
 2、打开微信开发者工具，导入项目，填写APPID；
 
