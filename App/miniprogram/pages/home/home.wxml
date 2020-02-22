@@ -61,7 +61,7 @@
                 <view class="item-container">
                     <!-- 头像 -->
                     <view class="item-image">
-                        <image bindtap='previewImage' id="{{item.poster.avatar}}" src="{{item.poster.avatar}}" wx:if="{{item.private == 0}}"></image>
+                        <image bindtap='previewImage' id="{{item.poster.avatar}}" src="{{item.poster.avatar?item.poster.avatar:'/image/boy-icon.png'}}" wx:if="{{item.private == 0}}"></image>
                         <image bindtap='previewImage' src="/image/boy-icon.png" wx:elif="{{item.private == 1 && item.poster.gender == 1}}"></image>
                         <image bindtap='previewImage' src="/image/girl-icon.png" wx:else></image>
                     </view>
@@ -303,7 +303,7 @@
     <view class='post-container' wx:if='{{showpostbtn}}'>
         <view class='wall'></view>
         <view class='post'>
-            <image src='/image/post.png' data-page='/pages/home/post/post' bindtap='post'></image>
+            <image src='/image/post.png' data-page='/pages/post/post' bindtap='post'></image>
         </view>
     </view>
 
@@ -311,7 +311,7 @@
     <view class='post-container' wx:if='{{!showpostbtn}}'>
         <view class='wall'></view>
         <view class='post'>
-            <image src='/image/new-post.png' data-page='/pages/home/postTopic/postTopic' bindtap='post'></image>
+            <image src='/image/new-post.png' data-page='/pages/postTopic/postTopic' bindtap='post'></image>
         </view>
     </view>
 

@@ -6,7 +6,11 @@ var request = require('request');
 var url = require('url');
 var crypto = require('crypto');
 var date = new Date().toUTCString()
-cloud.init()
+cloud.init({
+    // API 调用都保持和云函数当前所在环境一致
+    env: cloud.DYNAMIC_CURRENT_ENV,
+    traceUser: true,
+})
 
 /////////////////////////////////配置信息// 填写AK和请求///////////////////////////////////////////////////////////////////////
 // 请填写完整
@@ -18,7 +22,7 @@ var ak_secret = '';
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 云函数入口函数
-exports.main = async(event, context) => {
+exports.main = async (event, context) => {
     var image1 = event.image1
     var image2 = event.image2
 
@@ -34,13 +38,13 @@ exports.main = async(event, context) => {
         }
     };
 
-    md5 = function(buffer) {
+    md5 = function (buffer) {
         var hash;
         hash = crypto.createHash('md5');
         hash.update(buffer);
         return hash.digest('base64');
     };
-    sha1 = function(stringToSign, secret) {
+    sha1 = function (stringToSign, secret) {
         var signature;
         return signature = crypto.createHmac('sha1', secret).update(stringToSign).digest().toString('base64');
     };
@@ -60,7 +64,7 @@ exports.main = async(event, context) => {
     options.headers.Authorization = authHeader;
 
     // 封装函数
-    let promise = new Promise(function(resolve, reject) {
+    let promise = new Promise(function (resolve, reject) {
         request(options, (error, response, body) => {
             // 失败
             if (error) {
