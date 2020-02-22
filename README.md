@@ -1,4 +1,4 @@
-# SayLove 表白墙微信小程序
+# 基于微信云开发的SayLove 表白墙微信小程序
 
 > 注意：
 * 云函数的wx-server-sdk依赖需要更新才能正常使用，这里的都是旧版本的。上传云函数前请自行使用npm更新。
@@ -66,17 +66,17 @@
 
 ![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164625354-461794641.png)
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/love-new.png)
+![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164701306-838686484.png)
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/topic.png)
+![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164707877-1407077927.png)
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/sell.png)
+![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164714142-1549713777.png)
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/my.png)
+![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164720769-1248107178.png)
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/face.png)
+![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164727627-748356212.png)
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/message.png)
+![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164737005-591696446.png)
 
 
 
