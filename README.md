@@ -64,7 +64,7 @@
 [附：(微信小程序云函数) 阿里云人脸比对API封装 https://www.cnblogs.com/LiangSenCheng/p/10922979.html ](https://www.cnblogs.com/LiangSenCheng/p/10922979.html )
 ## 程序效果图
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/login.png)
+![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164625354-461794641.png)
 
 ![image](https://github.com/lx164/SayLove/blob/master/Images/love-new.png)
 
