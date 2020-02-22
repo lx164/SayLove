@@ -1,4 +1,11 @@
-# 基于微信云开发的SayLove 表白墙微信小程序
+# 基于微信云开发 SayLove 表白墙微信小程序
+
+![image](https://img.shields.io/badge/TAG-云开发-blue.svg) ![image](https://img.shields.io/badge/TAG-表白墙-blue.svg) ![image](https://img.shields.io/badge/TAG-微信小程序-blue.svg)
+
+[![image](https://img.shields.io/badge/author-lx164-orange.svg)](https://github.com/lx164/) [![image](https://img.shields.io/badge/CSDN-lx9625_鹤鹤-orange.svg)](https://blog.csdn.net/github_38967228) [![image](https://img.shields.io/badge/博客园-LiangSenCheng小森森-orange.svg)](https://www.cnblogs.com/LiangSenCheng/)
+
+
+项目地址：https://github.com/lx164/SayLove
 
 > 注意：
 * 云函数的wx-server-sdk依赖需要更新才能正常使用，这里的都是旧版本的。上传云函数前请自行使用npm更新。
@@ -28,6 +35,8 @@
 
 ```
 
+## 说明
+
  《SayLove》表白墙微信小程序，前台基于校园情书微信小程序进行大量的修改，虽然样式看起来都差不多，但是做了大量的修改。特别是后台部分，后台完全使用微信小程序云开发，不依赖服务器。前台代码由于是在原作者的基础上根据实际情况做了修改，所以跟原来作者的看起来很像,但并没有照搬照抄。
  
  为什么我要改写原作者的小程序？因为我尝试过根据原作者的所写的ReadMe进行配置，发现过程过于复杂，而且依赖因素太多，尝试了很多次都无法成功。在自己的好奇心驱使下，就基于原项目进行的改写，后台改写为微信小程序云开发，使其安装配置变得非常简单，拿来就可以直接使用了。
@@ -56,47 +65,24 @@
 * 情侣脸板块：自己封装阿里云人脸识别的接口，来适配云开发
 * 个人中心板块重写：自己重新构造了消息通知
 
-本程序已经经过测试，拿来按照说明简单配置就可以直接使用,界面可以自己进行修改。本人热爱小程序，目前上线并维护的有两个，其中一个是《桂工课程表》，后面找时间也会进行开源。
+本程序已经经过测试，拿来按照说明简单配置就可以直接使用,界面可以自己进行修改。本人热爱小程序，目前上线并维护的有两个，后面看情况再找时间进行开源。
 
  由于本人的能力有限，还有很多地方没法完善，望指正！
 
 
 [附：(微信小程序云函数) 阿里云人脸比对API封装 https://www.cnblogs.com/LiangSenCheng/p/10922979.html ](https://www.cnblogs.com/LiangSenCheng/p/10922979.html )
-## 程序效果图
-
-![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164625354-461794641.png)
-
-![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164701306-838686484.png)
-
-![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164707877-1407077927.png)
-
-![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164714142-1549713777.png)
-
-![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164720769-1248107178.png)
-
-![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164727627-748356212.png)
-
-![image](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164737005-591696446.png)
-
-
-
-
 
 ## 配置过程
 
-> 因为项目里含有微信小程序云开发用到的依赖，因此体积比较大。
+因为项目里含有微信小程序云开发用到的依赖，因此体积比较大。
 
-1、直接下载源码；
+1、直接下载源码,源码地址：https://github.com/lx164/SayLove/tree/master
 
-源码地址：https://github.com/lx164/SayLove/tree/master
-
-或者clone项目 `git clone https://github.com/lx164/SayLove.git`
-
-> 【注】：源码在APP文件夹下,在微信开发者工具导入的时候选择APP这个文件夹。因为有反映所导入报错，所以在这里说明一下。
+或者clone项目 `git clone https://github.com/lx164/SayLove/tree/master/App`
 
 2、打开微信开发者工具，导入项目，填写APPID；
 
-3、开通云开发环境（请参考官方文档）；
+3、开通云开发环境（[请参考官方文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/quickstart.html)）；
 
 4、新建以下数据库集合,一行为一个集合名（不要写错）：
 
@@ -128,13 +114,14 @@
     const FLASHTIME = 10000000
 ```
 
-> 如下图：
+ 如下图：
 
-![image](https://github.com/lx164/SayLove/blob/master/Images/config.png)
+![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164801877-1009585188.png)
+
 
 6、【选填，若使用 `情侣脸` ，则需要填写】填写阿里云面部识别相关配置信息：
 
-阿里云的`AccessKey`和`AccessKeySecret`的获取，以及人脸识别服务的开通请参考官方文档。 
+阿里云的`AccessKey`和`AccessKeySecret`的获取，以及人脸识别服务的开通请[参考官方文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)。 
 
 ```
 // 请填写完整
@@ -145,18 +132,24 @@ var ak_secret = '';
 ```
 
 >如图：
-![image](https://github.com/lx164/SayLove/blob/master/Images/ali.png)
 
-7、上传 `APP/cloudfunctions` 文件夹下的云函数，云函数所需要的依赖已安装，请直接选择 `上传并部署：所有文件`；
+![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164811375-1183587206.png)
+
+
+7、上传 `APP/cloudfunctions` 文件夹下所有的云函数，云函数所需要的依赖已安装(`如果没安装请自行使用npm安装或者更新`)，请直接选择 `上传并部署：所有文件`；
 
 8、编译运行。
 
 
 ## 结语
 
-> 欢迎一起探讨，如果可以，可以给我一个start，或者
+ 欢迎一起探讨，如果可以，可以给我一个start，或者
 
-![award](https://github.com/lx164/SayLove/blob/master/Images/award.jpg)
+![award](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164529400-127816623.jpg)
+
+## 程序效果图
+
+![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164625354-461794641.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164701306-838686484.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164707877-1407077927.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164714142-1549713777.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164720769-1248107178.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164727627-748356212.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164737005-591696446.png)
 
 
 ## 云开发 quickstart
@@ -169,5 +162,8 @@ var ak_secret = '';
 
 ## 参考文档
 
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+- [微信小程序云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+
+- [人脸比对API调用说明文档](https://help.aliyun.com/knowledge_detail/53535.html?spm=a2c4g.11174283.3.4.6f9f5d0dyGRUGn)
+
 

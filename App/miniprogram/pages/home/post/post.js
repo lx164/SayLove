@@ -134,6 +134,7 @@ Page({
         "created_at": nowtime,
         "updated_at": nowtime
       },
+
       success(res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
         console.log('提交结果',res)
@@ -145,6 +146,7 @@ Page({
         const minute = date.getMinutes()
         const second = date.getSeconds()
         var uptime = year + month.toString() + day.toString() + hour + minute + second
+        
         var path = res._id + uptime + '.png'
 
         var _id = res._id
