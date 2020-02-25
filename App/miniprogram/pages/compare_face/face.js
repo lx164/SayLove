@@ -1,5 +1,5 @@
 // pages/compare_face/face.js
-const config = require("../../config.js");
+const config = require("./../../config.js");
 const app = getApp()
 
 Page({
@@ -18,7 +18,13 @@ Page({
         postImageRight: '',
         rate: 0,
         face: '',
-        conclusion: ''
+        conclusion: '',
+        icon: {
+            width: "250rpx",
+            height: "250rpx",
+            path: "http://image.kucaroom.com/tmp/wx0f587d7c97a68e2b.o6zAJs3oh85Zb1lJE8oWix57vny0.LnBKkU9zx3EP4d2e331c723875767480754faf0248b7.png",
+            showImage: true
+        },
     },
     onLoad: function(option) {
         this.hiddenSelect();
@@ -26,6 +32,9 @@ Page({
     //  人脸比对
     compareface: function(image1, image2) {
         var that = this
+        wx.cloud.init({
+            env: config.CLOUNDID
+        })
         wx.cloud.callFunction({
                 // 云函数名称
             name: 'FaceAPI',
@@ -55,7 +64,6 @@ Page({
                         conclusion: data.message,
                         showReport: true,
                         bindReport: true,
-                        tryAgant:true
                     });
                 } else {
                     wx.showToast({
@@ -121,7 +129,6 @@ Page({
         return data
 
     },
-
     // 上传图片
     showSelect: function() {
         this.setData({
@@ -267,9 +274,9 @@ Page({
             conclusion: '',
             showReport: false,
             bindReport: false,
-            showCancel: false,
+            showCancel: true,
             tryAgant: false,
-            showBegin: true,
+            showBegin: false,
             showSubmit: false,
             postImageLeft: '',
             PostImageRight: '',
@@ -279,7 +286,17 @@ Page({
     },
 
     onShareAppMessage: function(res) {
-       
+        return {
+            title: '喜欢ta，那就说出来吧',
+            path: '/pages/index/index',
+            imageUrl: 'http://image.kucaroom.com/compare_face.jpg',
+            success: function(res) {
+                // 转发成功
+            },
+            fail: function(res) {
+                // 转发失败
+            }
+        }
     },
 
 

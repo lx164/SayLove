@@ -9,7 +9,7 @@
     <view class='image-left'>
 
       <view class='image' wx:if="{{!imageLeft}}" bindtap='selectLeft'>
-        <image class="upload" src='./images/select-image.png'></image>
+        <image class="upload" src='{{icon.path}}'></image>
       </view>
 
       <view class='image' wx:else bindtap='selectLeft'>
@@ -21,7 +21,7 @@
     <!-- 右边图片 -->
      <view class='image-left'>
       <view class='image' wx:if="{{!imageRight}}" bindtap='selectRight'>
-        <image class="upload" src='./images/select-image.png'></image>
+        <image class="upload" src='{{icon.path}}'></image>
       </view>
       <view class='image' wx:else>
         <image class="upload" src='{{imageRight}}' bindtap='selectRight'></image>
@@ -34,7 +34,7 @@
 <!-- 报告 -->
 <view class='report' wx-if="{{showReport}}">
   <view class='bind-report' wx-if="{{bindReport}}">
-    <image src='./images/bind-face-report.png'></image>
+    <image src='/image/bind-face-report.png'></image>
   </view>
   <view class='content'>
     <view class='report-title'>
@@ -48,7 +48,7 @@
       <view class='description report-item'>结论：{{conclusion}}</view>
       <view class='seal-world'>{{face}}</view>
       <view class='seal'>
-        <image src='./images/seal.png'></image>
+        <image src='/image/seal.png'></image>
       </view>
       <view class='support'>阿里AI提供技术支持</view>
     </view>
@@ -56,21 +56,21 @@
 </view>
 
 <view class='ding-container'>
-  <image src='./images/ding.png'></image>
+  <image src='../../image/ding.png'></image>
 </view>
 
-<view class='beging' bindtap='showSelect' wx:if="{{showBegin}}">
-  <view class='beging-button'>开始测试</view>
+<view class='beging' bindtap='showSelect' wx-if="{{showBegin}}">
+  <view class='beging-button'>开始</view>
 </view>
 
-<view class='beging' bindtap='cancelSelect' wx:if="{{showCancel}}">
+<view class='beging' bindtap='cancelSelect' wx-if="{{showCancel}}">
   <view class='beging-button'>取消</view>
 </view>
 
-<view class='beging' bindtap='submit' wx:if="{{showSubmit}}">
+<view class='beging' bindtap='submit' wx-if="{{showSubmit}}">
   <view class='beging-button'>提交</view>
 </view>
 
-<view class='beging' bindtap='tryAgant' wx:if="{{tryAgant}}">
+<view class='beging' bindtap='tryAgant' wx-if="{{tryAgant}}">
   <view class='beging-button'>再来一次</view>
 </view>

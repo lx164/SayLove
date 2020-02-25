@@ -1,5 +1,5 @@
 const app = getApp();
-const config = require("../../config.js");
+const config = require("../../../config.js");
 let genderArray = ['男', '女', '人妖', '未知生物'];
 
 Page({
@@ -437,7 +437,7 @@ Page({
      */
     post: function() {
         wx.navigateTo({
-            url: '/pages/post_sale/post_sale'
+            url: '/pages/sale/post_sale/post_sale'
         })
     },
 

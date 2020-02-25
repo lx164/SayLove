@@ -1,6 +1,6 @@
 // pages/home/index/index.js
 const app = getApp()
-const config = require("../../config.js");
+const config = require("../../../config.js");
 Page({
 
     /**

@@ -57,7 +57,7 @@ page{
 }
 
 .beging .beging-button{
-  background: #F75282;
+  background: #5A97B4;
   color: white;
   font-size: 35rpx;
   padding-top: 10rpx;

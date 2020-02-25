@@ -1,5 +1,5 @@
 page{
-  background-color: #F5F5F5;
+  background-color: #43CD80;
   display: flex;
   flex-direction: column;
 }
@@ -167,7 +167,7 @@ page{
 
 .comment-container .comment-icon{
   height: 75rpx;
-  background: #f0f0f0;
+  background: #424242;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -186,7 +186,7 @@ page{
 }
 
 .item-content .comment{
-  background: #f0f0f0;
+  background: WhiteSmoke;
   margin-bottom: 20rpx;
   margin-top: -20rpx;
 }
@@ -209,7 +209,6 @@ page{
 }
 
 .praise-container{
-  font-size: 12px;
   display: flex;
   flex-direction: row;
 }
@@ -261,16 +260,16 @@ page{
 }
 
 .praise-item .praise-user-avatar{
-  width: 30rpx;
-  height: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-right: 5rpx;
-  border-radius:50%;
+  border-radius:20rpx;
 }
 
 
 .praise-container .praise-user{
-  width: 30rpx;
-  height: 30rpx;
+  width: 42rpx;
+  height: 42rpx;
   margin-right: 10rpx;
 }
 
@@ -291,7 +290,6 @@ page{
 .comment-user-wall{
   width: 100%;
   display: flex;
-  font-size: 12px;
   flex-direction: column;
 }
 
@@ -395,7 +393,7 @@ page{
   margin-left: 20rpx;
   border-bottom-style:solid;
   border-width:1rpx;
-  border-color: #F75282;
+  border-color: #0aecc3;
   margin-right: 20rpx;
   padding-bottom: 15rpx;
   font: 30rpx;
@@ -408,7 +406,7 @@ page{
   width: 130rpx;
   height: 70rpx;
   font-size: 30rpx;
-  background: #F75282;
+  background: #0aecc3;
   color: white;
   margin-right: 20rpx;
   display: flex;
@@ -422,7 +420,7 @@ page{
 .auth-container{
   position: fixed;
   z-index: 300;
-  width: 100%;
+  width: 100%; 
   height: 100%;
   background: gray;
   display: flex;

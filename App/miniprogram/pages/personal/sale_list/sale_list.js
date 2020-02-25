@@ -1,6 +1,6 @@
 // pages/personal/sale_list/sale_list.js
 const app = getApp();
-const util = require("../../utils/util.js");
+const util = require("../../../utils/util.js");
 
 let genderArray = ['男', '女', '人妖', '未知生物'];
 
