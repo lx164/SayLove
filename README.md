@@ -7,6 +7,8 @@
 
 项目地址：https://github.com/lx164/SayLove
 
+* 无法下载或者下载太慢，直接联系我，联系方式在这里的首页：https://www.cnblogs.com/LiangSenCheng/p/11083714.html
+
 > 注意：
 * 云函数的wx-server-sdk依赖需要更新才能正常使用，这里的都是旧版本的。上传云函数前请自行使用npm更新。
 * 登录鉴权：（现在这个不可以用了，因为微信小程序的规则改了，这个不符合新规，需要自己修改）
