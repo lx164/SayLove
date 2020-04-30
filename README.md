@@ -7,11 +7,25 @@
 
 项目地址：https://github.com/lx164/SayLove
 
-* 无法下载或者下载太慢，直接联系我，联系方式在这里的首页：https://www.cnblogs.com/LiangSenCheng/p/11083714.html
+> 发现有问题？欢迎加我微信一起探讨，或者直接提Issues
+> 无法下载或者下载太慢？可以直接找我要安装包；
+> 
+> 联系方式在这里的首页：https://www.cnblogs.com/LiangSenCheng/p/11083714.html
+
+> Bug修复更新日历
+
+- [2020-04-30] 更新：
+
+1. 修复“`情侣脸`”云函数bug；
+2. 优化“`情侣脸`”交互逻辑，当无法识别时中断当前操作；
+3. 修复“`发布表白`”、“`发布话题`”时，没添加图片一直显示加载中的问题；
+4. 删除云函数不必要的依赖包；
+5. 全新版本的表白墙正在筹备中....
 
 > 注意：
-* 云函数的wx-server-sdk依赖需要更新才能正常使用，这里的都是旧版本的。上传云函数前请自行使用npm更新。
-* 登录鉴权：（现在这个不可以用了，因为微信小程序的规则改了，这个不符合新规，需要自己修改）
+* “`情侣脸`”云函数 `FaceAPI` 的wx-server-sdk依赖需要更新才能正常使用，这里的都是旧版本的,上传云函数前请自行使用npm更新。
+* `登录鉴权`：（现在这个不适用了，因为微信小程序的规则改了，这个不符合新规，需要自己根据实际情况修改）
+* `后台管理`：暂时没有做后台管理界面，直接在云开发后台即可查看管理，您也可以根据自己需要自己写一个简单的管理界面放在小程序端，然后把入口隐藏起来，限制指定用户使用即可。
 
 [TOC]
 
@@ -22,7 +36,7 @@
 |--|--|--|-- DeleteMessage 
 |--|--|--|-- DeleteMyLike
 |--|--|--|-- Deletes
-|--|--|--|-- FaceAPI 阿里云人脸识别API封装
+|--|--|--|-- FaceAPI 情侣脸(阿里云人脸识别API封装)
 |--|--|--|-- FrofessComment
 |--|--|--|-- FrofessZan
 |--|--|--|-- Message
@@ -78,15 +92,17 @@
 
 因为项目里含有微信小程序云开发用到的依赖，因此体积比较大。
 
-1、直接下载源码,源码地址：https://github.com/lx164/SayLove/tree/master
+1. 直接下载源码,源码地址：https://github.com/lx164/SayLove/tree/master
 
 或者clone项目 `git clone https://github.com/lx164/SayLove/tree/master/App`
 
-2、打开微信开发者工具，导入项目，填写APPID；
+2. 打开微信开发者工具，导入项目（导入的时候请选择 `APP` 文件夹）；
 
-3、开通云开发环境（[请参考官方文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/quickstart.html)）；
+3. 填写APPID；
 
-4、新建以下数据库集合,一行为一个集合名（不要写错）：
+4. 开通云开发环境（[请参考官方文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/quickstart.html)）；
+
+5. 新建以下数据库集合,一行为一个集合名（不要写错）：
 
 ```
     comment
@@ -99,7 +115,7 @@
 ```
 然后把以上的集合权限修改为：`所有用户可读，仅创建者可读写`。
 
-5、填写小程序相关配置信息；
+6. 填写小程序相关配置信息；
 
 配置文件在 `App/miniprogram/config.js` ,填写以下的配置信息：
 
@@ -121,31 +137,47 @@
 ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164801877-1009585188.png)
 
 
-6、【选填，若使用 `情侣脸` ，则需要填写】填写阿里云面部识别相关配置信息：
+7.填写阿里云面部识别相关配置信息【**`选填`**】：
 
-阿里云的`AccessKey`和`AccessKeySecret`的获取，以及人脸识别服务的开通请[参考官方文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)。 
+> 注意：如果不需要使用 `情侣脸` 功能的话，请跳过该步骤
+
+- 7.1 阿里云的`AccessKey`和`AccessKeySecret`的获取，以及人脸识别服务的开通请[参考官方文档](https://help.aliyun.com/knowledge_detail/53535.html?spm=a2c4g.11174283.3.4.6f9f5d0dyGRUGn)。 
 
 ```
-// 请填写完整
-// 阿里云的AccessKey
-var ak_id = '';
-// 阿里云的AccessKeySecret 
-var ak_secret = '';
+    // 请填写完整
+    // 阿里云的AccessKey
+    var ak_id = '';
+    // 阿里云的AccessKeySecret 
+    var ak_secret = '';
 ```
 
->如图：
+`AccessKey`和`AccessKeySecret`的填写位置如图：
 
 ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164811375-1183587206.png)
 
+- 7.2 检查云函数 `FaceAPI` 所需要的依赖是否已安装；
+```javaSciipt
+    // 1. 如果已经安装请自行使用npm更新；
+    // 2. 如果没有安装，则使用下面命令安装：
+    npm install crypto
+    npm install request
+    npm install url
+    npm install wx-server-sdk
+```
+ 
 
-7、上传 `APP/cloudfunctions` 文件夹下所有的云函数，云函数所需要的依赖已安装(`如果没安装请自行使用npm安装或者更新`)，请直接选择 `上传并部署：所有文件`；
 
-8、编译运行。
+- 7.3 上传云函数 `APP/cloudfunctions/FaceAPI`，上传时选择 `上传并部署：所有文件`；
+
+
+8. 上传 `APP/cloudfunctions` 文件夹下（除了`APP/cloudfunctions/FaceAPI`以外）所有的云函数，上传时选择 `上传并部署：云端安装依赖`；
+
+9. 编译运行。
 
 
 ## 结语
 
- 欢迎一起探讨，如果可以，可以给我一个start，或者
+ 欢迎一起探讨，如果你觉得还可以，您可以给我点一个start，或者赞赏我
 
 ![award](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164529400-127816623.jpg)
 
