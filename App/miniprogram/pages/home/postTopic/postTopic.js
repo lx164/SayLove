@@ -150,6 +150,13 @@ Page({
 
                 var _id = res._id
 
+                if(attachments.length==0){
+                    app.globalData.reloadHome = true;
+                    wx.navigateBack({
+                      comeBack: true
+                    });
+                    return false
+                  }
 
                 wx.cloud.uploadFile({
                     // 指定上传到的云路径

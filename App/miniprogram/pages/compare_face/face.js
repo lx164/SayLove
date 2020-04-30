@@ -26,18 +26,18 @@ Page({
             showImage: true
         },
     },
-    onLoad: function(option) {
+    onLoad: function (option) {
         this.hiddenSelect();
     },
     //  人脸比对
-    compareface: function(image1, image2) {
+    compareface: function (image1, image2) {
         var that = this
         wx.cloud.init({
             env: config.CLOUNDID
         })
         wx.cloud.callFunction({
                 // 云函数名称
-            name: 'FaceAPI',
+                name: 'FaceAPI',
                 // 传给云函数的参数
                 data: {
                     "image1": image1,
@@ -46,31 +46,41 @@ Page({
             })
             .then(res => {
                 console.log('face', res)
-                var result = JSON.parse(res.result)
-                console.log(typeof(result))
-                console.log(result)
-                console.log(result.confidence)
-                const errmsg = res.errMsg
+                try {
+                    var result = JSON.parse(res.result)
+                    console.log(typeof (result))
+                    console.log(result)
+                    console.log(result.confidence)
+                    const errmsg = res.errMsg
+                    // 云函数调用成功
+                    if (errmsg == 'cloud.callFunction:ok') {
+                        // 生成报告
+                        var data = that.aliDataAny(result.confidence.toFixed(2))
 
-                // 云函数调用成功
-                if (errmsg == 'cloud.callFunction:ok') {
-                    // 生成报告
-                    var data = that.aliDataAny(result.confidence.toFixed(2))
-                    
-                    wx.hideLoading();
-                    that.setData({
-                        rate: data.confidence,
-                        face: data.key_world,
-                        conclusion: data.message,
-                        showReport: true,
-                        bindReport: true,
-                    });
-                } else {
+                        wx.hideLoading();
+                        that.setData({
+                            rate: data.confidence,
+                            face: data.key_world,
+                            conclusion: data.message,
+                            showReport: true,
+                            bindReport: true,
+                        });
+                    } else {
+                        wx.showToast({
+                            title: '网络错误，检测失败！',
+                            icon: 'none'
+                        })
+                        setTimeout(function () {
+                            wx.hideLoading();
+                        }, 2000);
+                        return false;
+                    }
+                } catch (err) {
                     wx.showToast({
-                        title: res.data.error_message,
+                        title: '抱歉，无法检测，请更换照片重试',
                         icon: 'none'
                     })
-                    setTimeout(function() {
+                    setTimeout(function () {
                         wx.hideLoading();
                     }, 2000);
                     return false;
@@ -78,7 +88,7 @@ Page({
             })
     },
     // 解析阿里云接口返回的数据
-    aliDataAny: function(confidence) {
+    aliDataAny: function (confidence) {
         var confidence
         var keyWorld
         var message
@@ -124,13 +134,13 @@ Page({
             'key_world': keyWorld,
             'level': level,
             'message': message,
-            'confidence':confidence
+            'confidence': confidence
         }
         return data
 
     },
     // 上传图片
-    showSelect: function() {
+    showSelect: function () {
         this.setData({
             showSelect: true,
             showBegin: false,
@@ -138,7 +148,7 @@ Page({
         });
     },
 
-    hiddenSelect: function() {
+    hiddenSelect: function () {
         this.setData({
             showSelect: false,
             showReport: false,
@@ -146,7 +156,7 @@ Page({
         });
     },
 
-    cancelSelect: function() {
+    cancelSelect: function () {
         this.setData({
             showSelect: false,
             showBegin: true,
@@ -157,14 +167,14 @@ Page({
         });
     },
 
-    selectLeft: function() {
+    selectLeft: function () {
         this.setData({
             showReport: false
         })
         this.ChooseImage('imageleft')
     },
 
-    selectRight: function() {
+    selectRight: function () {
         this.setData({
             showReport: false
         })
@@ -235,7 +245,7 @@ Page({
         })
     },
     // 提交检测
-    submit: function() {
+    submit: function () {
         var that = this
         if (this.data.postImageLeft == '') {
             wx.showToast({
@@ -267,7 +277,7 @@ Page({
     },
 
     // 再试一次
-    tryAgant: function() {
+    tryAgant: function () {
         this.setData({
             rate: 0,
             face: '',
@@ -285,15 +295,15 @@ Page({
         });
     },
 
-    onShareAppMessage: function(res) {
+    onShareAppMessage: function (res) {
         return {
             title: '喜欢ta，那就说出来吧',
             path: '/pages/index/index',
             imageUrl: 'http://image.kucaroom.com/compare_face.jpg',
-            success: function(res) {
+            success: function (res) {
                 // 转发成功
             },
-            fail: function(res) {
+            fail: function (res) {
                 // 转发失败
             }
         }
@@ -303,49 +313,49 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
+    onShow: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

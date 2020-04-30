@@ -5,7 +5,6 @@ const cloud = require('wx-server-sdk')
 var request = require('request');
 var url = require('url');
 var crypto = require('crypto');
-var date = new Date().toUTCString()
 cloud.init()
 
 /////////////////////////////////配置信息// 填写AK和请求///////////////////////////////////////////////////////////////////////
@@ -19,6 +18,7 @@ var ak_secret = '';
 
 // 云函数入口函数
 exports.main = async(event, context) => {
+    var date = new Date().toUTCString()
     var image1 = event.image1
     var image2 = event.image2
 
