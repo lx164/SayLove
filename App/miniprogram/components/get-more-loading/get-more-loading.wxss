@@ -13,7 +13,7 @@
   padding-bottom: 20rpx;
 }
 
-.get-more image{
+.get-more .image{
   width: 40rpx;
   height: 40rpx;
 }
