@@ -54,10 +54,7 @@ Page({
                 })
             },
             fail: err => {
-                wx.showModal({
-                    title: '登录失败',
-                    content: err,
-                })
+               console.log（err）
             }
         })
     },
