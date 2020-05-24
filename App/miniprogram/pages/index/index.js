@@ -54,7 +54,7 @@ Page({
                 })
             },
             fail: err => {
-               console.log（err）
+               console.log(err)
             }
         })
     },
