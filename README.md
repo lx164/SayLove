@@ -1,8 +1,8 @@
 # 校园表白墙微信小程序 SayLove -基于微信云开发-快速搭建,开箱即用
 
-![image](https://img.shields.io/badge/TAG-云开发-blue.svg) ![image](https://img.shields.io/badge/TAG-表白墙-blue.svg) ![image](https://img.shields.io/badge/TAG-微信小程序-blue.svg)
+![image](https://img.shields.io/badge/license-Apache2.0-green.svg) ![image](https://img.shields.io/badge/TAG-云开发-blue.svg) ![image](https://img.shields.io/badge/TAG-表白墙-blue.svg) ![image](https://img.shields.io/badge/TAG-微信小程序-blue.svg)
 
-[![image](https://img.shields.io/badge/author-lx164-orange.svg)](https://github.com/lx164/) [![image](https://img.shields.io/badge/CSDN-lx9625_鹤鹤-orange.svg)](https://blog.csdn.net/github_38967228) [![image](https://img.shields.io/badge/博客园-LiangSenCheng小森森-orange.svg)](https://www.cnblogs.com/LiangSenCheng/)
+[![image](https://img.shields.io/badge/Author-lx164-orange.svg)](https://github.com/lx164/) [![image](https://img.shields.io/badge/CSDN-lx9625_鹤鹤-orange.svg)](https://blog.csdn.net/github_38967228) [![image](https://img.shields.io/badge/博客园-LiangSenCheng小森森-orange.svg)](https://www.cnblogs.com/LiangSenCheng/)
 
 
 项目地址：https://github.com/lx164/SayLove
