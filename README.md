@@ -9,12 +9,12 @@
 
 ***如需小程序定制「包括但不限于课设、毕设等」可联系我，联系方式请点击> [博客园](https://www.cnblogs.com/LiangSenCheng)< 的首页；***
 
+> 备用联系方式：[点击这里](https://blog-static.cnblogs.com/files/LiangSenCheng/wechat.gif)
+
 > 发现有问题？欢迎加我微信一起探讨，或者直接提Issues
 > 无法下载或者下载太慢？可以直接找我要安装包；
 > 
 > 联系方式在这里的首页：https://www.cnblogs.com/LiangSenCheng/p/11083714.html
-
-> 备用联系方式：https://blog-static.cnblogs.com/files/LiangSenCheng/wechat.gif
 
 [![阿里云优惠活动](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/blog20210228174209.jpg)](https://www.aliyun.com/activity/daily/bestoffer?userCode=sskuuw5n)
 
