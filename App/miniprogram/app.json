@@ -11,14 +11,10 @@
         "pages/sale/post_sale/post_sale",
         "pages/sale/comment_sale/comment_sale",
         "pages/personal/index/personal",
-        "pages/personal/letter/letter",
         "pages/personal/message/message",
-        "pages/personal/suggestion/suggestion",
-        "pages/personal/friends/friends",
         "pages/personal/post_list/post_list",
         "pages/personal/topic_list/topic_list",
         "pages/personal/sale_list/sale_list",
-        "pages/personal/set_profile/set_profile",
         "pages/compare_face/face"
     ],
     "window": {

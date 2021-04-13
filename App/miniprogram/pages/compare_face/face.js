@@ -32,9 +32,6 @@ Page({
     //  人脸比对
     compareface: function (image1, image2) {
         var that = this
-        wx.cloud.init({
-            env: config.CLOUNDID
-        })
         wx.cloud.callFunction({
                 // 云函数名称
                 name: 'FaceAPI',

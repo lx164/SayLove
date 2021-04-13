@@ -7,7 +7,7 @@
 
 项目地址：https://github.com/lx164/SayLove
 
-***如需小程序定制「包括但不限于课设、毕设等」可联系我，联系方式请点击> [博客园](https://www.cnblogs.com/LiangSenCheng)< 的首页；***
+***如需小程序定制「包括但不限于课设、毕设、商用的等」可联系我，联系方式请点击> [博客园](https://www.cnblogs.com/LiangSenCheng)< 的首页；***
 
 > 备用联系方式：[点击这里](https://blog-static.cnblogs.com/files/LiangSenCheng/wechat.gif)
 
@@ -18,12 +18,22 @@
 
 [![阿里云优惠活动](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/blog20210228174209.jpg)](https://www.aliyun.com/activity/daily/bestoffer?userCode=sskuuw5n)
 
-- [其他开源项目]
+## 其他开源项目
+
+***不要只是白嫖 ,如果帮到你了麻烦点个Start (不管github[点这里](https://github.com/lx164/SayLove), 还是gitee[点这里](https://gitee.com/LiangSenCheng/SayLove)都可以)***
 
 1. 基于微信小程序云开发-租房微信小程序-带管理员后台 https://github.com/lx164/house
 2. https://www.cnblogs.com/LiangSenCheng/p/12543230.html
 
 > Bug修复更新日历
+
+- [2021-04-13] 更新说明：
+
+1.适配微信的新授权规则,但是以后没有微信昵称和微信头像了;修改详情请参考[点这里](https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801?blockType=1)
+
+2.简化代码结构,删除不需要的文件;
+
+3.优化初始化云环境的代码,现在只需填写自己的 云环境ID即可;
 
 - [2021-04-06] 更新说明：
 
@@ -44,8 +54,6 @@
 2. 优化“`情侣脸`”交互逻辑，当无法识别时中断当前操作；
 3. 修复“`发布表白`”、“`发布话题`”时，没添加图片一直显示加载中的问题；
 4. 删除云函数不必要的依赖包；
-5. 全新版本的表白墙正在筹备中....
-
 
 - [2020-05-20] 说明更新：
 
@@ -54,7 +62,7 @@
 > 注意：
 * “`情侣脸`”云函数 `FaceAPI` 的wx-server-sdk依赖需要更新才能正常使用，这里的都是旧版本的,上传云函数前请自行使用npm更新。
 * `登录鉴权`：（现在这个不适用了，因为微信小程序的规则改了，这个不符合新规，需要自己根据实际情况修改）
-* `后台管理`：暂时没有做后台管理界面，直接在云开发后台即可查看管理，您也可以根据自己需要自己写一个简单的管理界面放在小程序端，然后把入口隐藏起来，限制指定用户使用即可。
+* `后台管理`：暂时没有做后台管理界面，直接在云开发后台即可查看管理，您也可以根据自己需要自己写一个简单的管理界面放在小程序端，然后把入口隐藏起来，限制指定用户使用即可。可以参考这个项目的做法: [点这里](https://github.com/lx164/house)
 
 [TOC]
 
@@ -119,7 +127,7 @@
 
 ## 配置过程
 
-因为项目里含有微信小程序云开发用到的依赖，因此体积比较大。
+别说什么按照配置后不能使用, 请认真看好每一步, 如果连最基本的操作都不会, 麻烦先去看看官方文档学习一下!
 
 1. 直接下载源码,源码地址：https://github.com/lx164/SayLove/tree/master
 
@@ -149,11 +157,7 @@
 配置文件在 `App/miniprogram/config.js` ,填写以下的配置信息：
 
 ```javascrpt
-    // 小程序APPID
-    const APPID = ''
-    // 小程序SECRET
-    const SECRET = ""
-    // 云开发环境ID
+    // 云开发环境ID(必填,填错用不了)
     const CLOUNDID = ''
     // 消息刷新时间，单位：毫秒
     // 默认10秒刷新一次，即10000毫秒
