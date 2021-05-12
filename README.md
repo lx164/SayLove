@@ -29,7 +29,7 @@
 
 - [2021-05-12] 更新说明：
 
-1. 【课设毕设参考专用】针对 昵称显示 `微信用户`、 头像只显示灰色头像等的问题进行了修复，需要了解详情以及新代码的话，请加我微信了解（***请备注来源、来意***） [点击这里](https://blog-static.cnblogs.com/files/LiangSenCheng/wechat.gif)
+1. 【 ***课设毕设参考专用版本*** 】针对 昵称显示 `微信用户`、 头像只显示灰色头像等的问题进行了修复，需要了解详情以及新代码的话，请加我微信了解（***请备注来源、来意***） [点击这里](https://blog-static.cnblogs.com/files/LiangSenCheng/wechat.gif)
 
 2. `情侣脸`功能大家不要使用了，现在阿里云的接口已经要收费了(土豪请随意)，[官方文档看这里](https://help.aliyun.com/document_detail/143096.html?spm=5176.12127906.J_1357642.6.60674ca8q2d8cK)
 
