@@ -173,7 +173,7 @@
 
  如下图：
 
-![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164801877-1009585188.png)
+![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/ali.png)
 
 
 7.填写阿里云面部识别相关配置信息【**`选填`**】：
@@ -192,7 +192,7 @@
 
 `AccessKey`和`AccessKeySecret`的填写位置如图：
 
-![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164811375-1183587206.png)
+![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/config.png)
 
 - 7.2 检查云函数 `FaceAPI` 所需要的依赖是否已安装；
 ```javaSciipt
@@ -218,11 +218,11 @@
 
  欢迎一起探讨，如果你觉得还可以，您可以给我点一个start，或者赞赏我
 
-![award](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164529400-127816623.jpg)
+![award](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/award.jpg)
 
 ## 程序效果图
 
-![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164625354-461794641.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164701306-838686484.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164707877-1407077927.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164714142-1549713777.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164720769-1248107178.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164727627-748356212.png) ![](https://img2018.cnblogs.com/blog/1697917/201906/1697917-20190625164737005-591696446.png)
+![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/1.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/2.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/3.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/4.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/5.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/6.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/7.png)
 
 
 ## Start趋势
