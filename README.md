@@ -16,8 +16,6 @@
 > 
 > 联系方式在这里的首页：https://www.cnblogs.com/LiangSenCheng/p/11083714.html
 
-[![阿里云优惠活动](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/blog20210228174209.jpg)](https://www.aliyun.com/activity/daily/bestoffer?userCode=sskuuw5n)
-
 ## 其他开源项目
 
 ***不要只是白嫖 ,如果帮到你了麻烦点个Start (不管github[点这里](https://github.com/lx164/SayLove), 还是gitee[点这里](https://gitee.com/LiangSenCheng/SayLove)都可以)***
@@ -173,7 +171,7 @@
 
  如下图：
 
-![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/ali.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/70d8e2462c5b3e272e9fb0c97da4c6af.png)
 
 
 7.填写阿里云面部识别相关配置信息【**`选填`**】：
@@ -192,7 +190,7 @@
 
 `AccessKey`和`AccessKeySecret`的填写位置如图：
 
-![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/config.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/3ec49478511813bd8e6c9cbdbd17ef83.png)
 
 - 7.2 检查云函数 `FaceAPI` 所需要的依赖是否已安装；
 ```javaSciipt
@@ -218,11 +216,17 @@
 
  欢迎一起探讨，如果你觉得还可以，您可以给我点一个start，或者赞赏我
 
-![award](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/award.jpg)
+![award](https://img-hello-world.oss-cn-beijing.aliyuncs.com/342c03c7f912b68489ee2f0b85a53d0f.jpeg)
 
 ## 程序效果图
 
-![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/1.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/2.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/3.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/4.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/5.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/6.png)![](https://cdn.jsdelivr.net/gh/LiangSenCheng/blog-img/app/saylove/7.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/ba553d6533a3ab579fae7f38ae7118f6.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/c3d87dae83ead848334607d197ae1e17.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/2c0f5adeb0dfa788ad49d1a378f2f527.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/3de4f0a1df959ca9328ae88cc58abe46.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/af446ccce18e12c1ebe7ddeb636c63ff.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/b8fd025571090b754a9b8b8aa9da7a8b.png)
+![](https://img-hello-world.oss-cn-beijing.aliyuncs.com/053ed4e2f956e029d5e5361ee08bd28e.png)
 
 
 ## Start趋势
